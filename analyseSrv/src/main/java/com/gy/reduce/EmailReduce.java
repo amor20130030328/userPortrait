@@ -13,6 +13,7 @@ public class EmailReduce implements ReduceFunction<EmailInfo> {
         EmailInfo emailInfoFinal = new EmailInfo();
         emailInfoFinal.setCount( count1 + count2 );
         emailInfoFinal.setEmailType(emailType);
-        return emailInfo;
+        emailInfoFinal.setGroupField(emailInfo.getGroupField());
+        return emailInfoFinal;
     }
 }

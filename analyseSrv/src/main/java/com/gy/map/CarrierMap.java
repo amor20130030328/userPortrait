@@ -26,6 +26,7 @@ public class CarrierMap implements MapFunction<String,CarrierInfo> {
         String usetype = userinfos[7];   //终端类型 : 0:pc端 1.移动端 2. 小程序
 
         int carriertype = CarrierUtils.getCarrierByTel(telphone);
+
         String carriertypestring = carriertype == 0 ? "未知运营商" : carriertype == 1 ? "移动用户" : carriertype == 2 ? "联通用户" : "电信用户";
 
         String tableName = "userflaginfo";
@@ -34,7 +35,7 @@ public class CarrierMap implements MapFunction<String,CarrierInfo> {
         String column = "carrierinfo";  //运营商
         HBaseUtils.putData(tableName,rowkey,familyName,column,carriertypestring);
         CarrierInfo carrierInfo = new CarrierInfo();
-        String groupField = "carrierInfo==" + carrierInfo;
+        String groupField = "carrierInfo==" + carriertypestring;
         carrierInfo.setCount(1L);
         carrierInfo.setCarrier(carriertypestring);
         carrierInfo.setGroupField(groupField);

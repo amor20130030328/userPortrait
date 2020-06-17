@@ -27,17 +27,19 @@ public class YearBaseMap implements MapFunction<String,YearBase> {
         String usetype = userinfos[7];   //终端类型 : 0:pc端 1.移动端 2. 小程序
 
         String yearbasetype = DateUtils.getYearBaseByAge(age);
-        String tableName = "baseuserscaninfo";
+        String tableName = "userflaginfo";
         String rowKey = userid;
-        String familyName = "time";
-        String column = "";
-        HBaseUtils.putData(tableName,rowKey,familyName,column,"");
+        String familyName = "baseinfo";
+        String column = "yearbase";
+        System.out.println(yearbasetype + "" + age);
+        HBaseUtils.putData(tableName,rowKey,familyName,column,yearbasetype);
+        HBaseUtils.putData(tableName,rowKey,familyName,"age",age);
 
         YearBase yearBase = new YearBase();
-        String groupfield = "yearbase == " + yearbasetype;
+        String groupfield = "yearbase==" + yearbasetype;
         yearBase.setYearType(yearbasetype);
         yearBase.setCount(1L);
-        yearBase.setGroupField(groupfield);
+        yearBase.setGroupfield(groupfield);
         return yearBase;
     }
 }

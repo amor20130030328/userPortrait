@@ -8,7 +8,6 @@ public class YearBaseReduce implements ReduceFunction<YearBase> {
 
     @Override
     public YearBase reduce(YearBase yearBase, YearBase t1) throws Exception {
-
         String yearType = yearBase.getYearType();
         Long count1 = yearBase.getCount();
         Long count2 = t1.getCount();
@@ -16,6 +15,7 @@ public class YearBaseReduce implements ReduceFunction<YearBase> {
         YearBase finalyearBase = new YearBase();
         finalyearBase.setYearType(yearType);
         finalyearBase.setCount(count1 + count2);
+        finalyearBase.setGroupfield(yearBase.getGroupfield());
         return finalyearBase;
     }
 }

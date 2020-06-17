@@ -1,0 +1,14 @@
+server:
+  port: 10004
+spring:
+  application:
+    name: viewService
+
+  main:
+    allow-bean-definition-overriding: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10000/eureka/
+
+

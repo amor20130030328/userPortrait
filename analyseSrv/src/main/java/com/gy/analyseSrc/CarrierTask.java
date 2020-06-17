@@ -34,7 +34,10 @@ public class CarrierTask {
             for (CarrierInfo carrierInfo: resultList) {
                 String carrier = carrierInfo.getCarrier();
                 Long count = carrierInfo.getCount();
+
                 Document doc = MongoUtil.findOneBy("carrierstatics", "portrait", carrier);
+                System.out.println(count +"" +carrier + doc);
+
                 if(doc == null){
                     doc = new Document();
                     doc.put("info",carrier);
@@ -44,11 +47,12 @@ public class CarrierTask {
                     Long countPre = doc.getLong("count");
                     Long total = countPre + count;
                     doc.put("count",total);
+
                 }
+
                 MongoUtil.saveOrUpdateMongo("carrierstatics","portrait",doc);
             }
-            env.execute("carrier analy");
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }

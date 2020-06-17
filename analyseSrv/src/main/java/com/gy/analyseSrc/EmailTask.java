@@ -21,12 +21,9 @@ public class EmailTask {
 
         final ParameterTool params = ParameterTool.fromArgs(args);
 
-        //set up the execution environment
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
-        //make parameters available in the web interface
         env.getConfig().setGlobalJobParameters(params);
 
-        //get input data
         DataSet<String> text = env.readTextFile(params.get("input"));
         DataSet<EmailInfo> mapReduce = text.map(new EmailMap());
 
@@ -37,6 +34,8 @@ public class EmailTask {
             for (EmailInfo emailInfo: resultList) {
                 String emailType = emailInfo.getEmailType();
                 Long count = emailInfo.getCount();
+
+                System.out.println(emailType + "===" + count);
 
                 Document doc = MongoUtil.findOneBy("emailstatics", "portrait", emailType);
                 if(doc == null){
@@ -52,7 +51,6 @@ public class EmailTask {
                 }
                 MongoUtil.saveOrUpdateMongo("emailstatics","portrait",doc);
             }
-            env.execute("email analy");
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -27,6 +27,8 @@
             <artifactId>flink-scala_2.11</artifactId>
             <version>1.7.2</version>
         </dependency>
+
+
         <dependency>
             <groupId>org.apache.hbase</groupId>
             <artifactId>hbase-client</artifactId>
@@ -42,7 +44,7 @@
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongodb-driver</artifactId>
-            <version>3.0.1</version>
+            <version>3.11.2</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>

@@ -22,7 +22,7 @@ public class YearBaseTask {
 
         DataSet<String> text = env.readTextFile(params.get("input"));
         DataSet<YearBase> mapresult = text.map(new YearBaseMap());
-        DataSet<YearBase> reduceresult = mapresult.groupBy("groupField").reduce(new YearBaseReduce());
+        DataSet<YearBase> reduceresult = mapresult.groupBy("groupfield").reduce(new YearBaseReduce());
 
         try {
             List<YearBase> resultList = reduceresult.collect();
@@ -42,7 +42,7 @@ public class YearBaseTask {
 
                 MongoUtil.saveOrUpdateMongo("yearbasestatics","portrait",doc);
             }
-            env.execute("year base");
+           // env.execute("year base task");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,6 +1,8 @@
 package com.gy.util;
 
 import com.alibaba.fastjson.JSONObject;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -17,6 +19,7 @@ public class MongoUtil {
         MongoDatabase mongoDatabase = mongoClient.getDatabase(database);
         MongoCollection<Document> mongoCollection = mongoDatabase.getCollection(tableName);
         Document doc = new Document();
+        doc.put("info", yearBaseType);
         FindIterable<Document> itrer = mongoCollection.find(doc);
         MongoCursor<Document> mongoCursor = itrer.iterator();
         if(mongoCursor.hasNext()){
@@ -24,6 +27,14 @@ public class MongoUtil {
         }else{
             return null;
         }
+    }
+
+
+    public static void main(String[] args) {
+
+        Document document = findOneBy("carrierstatics", "portrait", "联通户");
+        System.out.println(document);
+
     }
 
     public static void saveOrUpdateMongo(String tableName,String database, Document doc){

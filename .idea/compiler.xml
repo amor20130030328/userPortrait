@@ -7,8 +7,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="analyseSrv" />
+        <module name="eureka" />
+        <module name="InfoInService" />
+        <module name="producerData" />
+        <module name="searchInfo" />
+        <module name="viewService" />
         <module name="youfancommon" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="registerCenter" target="1.8" />
+      <module name="registercenters" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,10 +1,18 @@
 package com.youfan.log;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
 /**
  * Created by li on 2019/1/6.
  */
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class BuyCartProductLog implements Serializable{
      private int productid;//商品id
      private int producttypeid;//商品类别id
@@ -16,67 +24,4 @@ public class BuyCartProductLog implements Serializable{
 
     private String brand;//品牌
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public int getProductid() {
-        return productid;
-    }
-
-    public void setProductid(int productid) {
-        this.productid = productid;
-    }
-
-    public int getProducttypeid() {
-        return producttypeid;
-    }
-
-    public void setProducttypeid(int producttypeid) {
-        this.producttypeid = producttypeid;
-    }
-
-    public String getOperatortime() {
-        return operatortime;
-    }
-
-    public void setOperatortime(String operatortime) {
-        this.operatortime = operatortime;
-    }
-
-    public int getOperatortype() {
-        return operatortype;
-    }
-
-    public void setOperatortype(int operatortype) {
-        this.operatortype = operatortype;
-    }
-
-    public int getUserid() {
-        return userid;
-    }
-
-    public void setUserid(int userid) {
-        this.userid = userid;
-    }
-
-    public int getUsetype() {
-        return usetype;
-    }
-
-    public void setUsetype(int usetype) {
-        this.usetype = usetype;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
 }

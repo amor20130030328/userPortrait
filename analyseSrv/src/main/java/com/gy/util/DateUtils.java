@@ -35,4 +35,30 @@ public class DateUtils {
         return yearBaseType;
     }
 
+    public static int getDaysBetweenByStartAndEnd(String startTime,String endTime,String dateFormatString) throws Exception{
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormatString);
+        Date start = simpleDateFormat.parse(startTime);
+        Date end = simpleDateFormat.parse(endTime);
+
+        Calendar startCalendar = Calendar.getInstance();
+        Calendar endCalendar = Calendar.getInstance();
+        startCalendar.setTime(start);
+        endCalendar.setTime(end);
+
+        int days = 0;
+        while(startCalendar.before(endCalendar)){
+            startCalendar.add(Calendar.DAY_OF_YEAR,1);
+            days += 1;
+        }
+        return days;
+    }
+
+    public static String getHoursByDate(String timeValue) throws Exception{
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd hhmmss");
+        Date time = dateFormat.parse(timeValue);
+        dateFormat = new SimpleDateFormat("hh");
+        String resulthour = dateFormat.format(time);
+        return resulthour;
+    }
+
 }

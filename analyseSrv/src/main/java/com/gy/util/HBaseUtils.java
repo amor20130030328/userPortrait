@@ -21,7 +21,7 @@ public class HBaseUtils {
     static {
         //创建hbase 配置对象
         Configuration conf = HBaseConfiguration.create();
-        conf.set("hbase.rootdir","hdfs://hadoop102:9000/hbase");
+        conf.set("hbase.rootdir","hdfs://hadoop102:9000/HBase");
         //使用eclipses时必须添加这个，否则无法定位
         conf.set("hbase.zookeeper.quorum","hadoop102");
         conf.set("hbase.client.scanner.timeout.period","600000");
